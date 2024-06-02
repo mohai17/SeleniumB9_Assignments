@@ -4,8 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-//import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
@@ -15,9 +14,10 @@ import java.io.File;
 public class StudentRegFormTest {
     public static void main(String[] args) throws InterruptedException {
 
-        WebDriver webDriver = new ChromeDriver();
-        webDriver.navigate().to("https://demoqa.com/automation-practice-form");
+        WebDriver webDriver = new FirefoxDriver();
+
         webDriver.manage().window().maximize();
+        webDriver.navigate().to("https://demoqa.com/automation-practice-form");
         webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 
         Thread.sleep(3000);
@@ -69,6 +69,9 @@ public class StudentRegFormTest {
 
         new Actions(webDriver).moveToElement(webDriver.findElement(By.id("react-select-4-input"))).click().perform();
         new Actions(webDriver).moveToElement(webDriver.findElement(By.id("react-select-4-option-0"))).click().perform();
+
+        webDriver.findElement(By.cssSelector("button[id='submit']")).click();
+        webDriver.findElement(By.cssSelector("button[id='closeLargeModal']")).click();
 
         Thread.sleep(3000);
 
